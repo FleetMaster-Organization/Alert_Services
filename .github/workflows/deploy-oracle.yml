@@ -17,8 +17,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ~/proyecto-web/alert
+            cd ~/proyecto-web/Alert_Services
             git pull origin master
             
             cd ~/proyecto-web
-            docker-compose up -d --build alert-services
+            docker compose up -d --build alert-services
