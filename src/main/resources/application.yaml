@@ -59,10 +59,13 @@ app:
     secret: ${JWT_SECRET}
 
 # Swagger / OpenAPI
+# Los paths llevan el prefijo /alerts para que coincidan con lo que el Gateway
+# enruta hacia este servicio (/alerts/**). Sin el prefijo, el Gateway reenvía
+# /alerts/swagger-ui/... pero springdoc lo tenía mapeado en /swagger-ui/... → 404.
 springdoc:
   api-docs:
-    path: /v3/api-docs
+    path: /alerts/v3/api-docs
   swagger-ui:
-    path: /swagger-ui.html
+    path: /alerts/swagger-ui.html
     operations-sorter: method
     tags-sorter: alpha
