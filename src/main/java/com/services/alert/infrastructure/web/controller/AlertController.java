@@ -47,7 +47,7 @@ public class AlertController {
     // ── Listado paginado simple (filtra por status) ─────────────────────────
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMINISTRADOR', 'ROLE_COORDINADOR')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMINISTRADOR', 'ROLE_COORDINADOR', 'ROLE_DESPACHADOR', 'ROLE_MECANICO')")
     public ResponseEntity<List<AlertResponse>> getAlerts(
             @RequestParam(required = false) AlertStatus status) {
 
@@ -57,7 +57,7 @@ public class AlertController {
     // ── Detalle de alerta ───────────────────────────────────────────────────
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMINISTRADOR', 'ROLE_COORDINADOR')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMINISTRADOR', 'ROLE_COORDINADOR', 'ROLE_DESPACHADOR', 'ROLE_MECANICO')")
     public ResponseEntity<AlertResponse> getAlertById(@PathVariable UUID id) {
         return ResponseEntity.ok(getAlertByIdUseCase.execute(id));
     }
